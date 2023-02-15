@@ -22,8 +22,8 @@ namespace AuthoEx.Controllers
         }
 
         // GET: Students
-        [Authorize(Policy = "CanDoEveryThing")]
-        [Authorize(Policy = "CanAddAndView")]
+        [Authorize(Policy = "All")]
+        [Authorize(Policy = "AddAndView")]
         [Authorize(Policy = "ViewOnly")]
         public async Task<IActionResult> Index()
         {
@@ -49,8 +49,8 @@ namespace AuthoEx.Controllers
         }
 
         // GET: Students/Create
-        [Authorize(Policy = "CanDoEveryThing")]
-        [Authorize(Policy = "CanAddAndView")]
+        [Authorize(Policy = "All")]
+        [Authorize(Policy = "AddAndView")]
         public IActionResult Create()
         {
             return View();
@@ -61,8 +61,8 @@ namespace AuthoEx.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "CanDoEveryThing")]
-        [Authorize(Policy = "CanAddAndView")]
+        [Authorize(Policy = "All")]
+        [Authorize(Policy = "AddAndView")]
         public async Task<IActionResult> Create([Bind("StudentId,Name,DateOfBirth,Email,Address")] Student student)
         {
             if (ModelState.IsValid)
@@ -75,7 +75,7 @@ namespace AuthoEx.Controllers
         }
 
         // GET: Students/Edit/5
-        [Authorize(Policy = "CanDoEveryThing")]
+        [Authorize(Policy = "All")]
         public async Task<IActionResult> Edit(long? id)
         {
             if (id == null || _context.Students == null)
@@ -96,7 +96,7 @@ namespace AuthoEx.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "CanDoEveryThing")]
+        [Authorize(Policy = "All")]
         public async Task<IActionResult> Edit(long id, [Bind("StudentId,Name,DateOfBirth,Email,Address")] Student student)
         {
             if (id != student.StudentId)
@@ -128,7 +128,7 @@ namespace AuthoEx.Controllers
         }
 
         // GET: Students/Delete/5
-        [Authorize(Policy = "CanDoEveryThing")]
+        [Authorize(Policy = "All")]
         public async Task<IActionResult> Delete(long? id)
         {
             if (id == null || _context.Students == null)
@@ -149,7 +149,7 @@ namespace AuthoEx.Controllers
         // POST: Students/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "CanDoEveryThing")]
+        [Authorize(Policy = "All")]
         public async Task<IActionResult> DeleteConfirmed(long id)
         {
             if (_context.Students == null)

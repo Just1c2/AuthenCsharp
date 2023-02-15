@@ -16,11 +16,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("CanDoEveryThing", policy =>
+    options.AddPolicy("All", policy =>
         policy.RequireAssertion(context =>
             context.User.Identity.Name == "admin@mvc.web"));
 
-    options.AddPolicy("CanAddAndView", policy =>
+    options.AddPolicy("AddAndView", policy =>
     policy.RequireAssertion(context =>
         context.User.Identity.Name == "add@mvc.web"));
 
